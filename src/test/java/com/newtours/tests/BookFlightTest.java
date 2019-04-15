@@ -25,6 +25,7 @@ public class BookFlightTest extends BaseTest {
 
     @Test
     public void registrationPage() {
+        System.out.println("Registration page test case");
         RegistrationPage registrationPage = new RegistrationPage(_driver);
         registrationPage.goTo();
         registrationPage.enterUserDetails("selenium", "docker");
@@ -34,12 +35,14 @@ public class BookFlightTest extends BaseTest {
 
     @Test(dependsOnMethods = "registrationPage")
     public void registrationConfirmationPage() {
+        System.out.println("Registration confirmation page test case");
         RegistrationConfirmationPage registrationConfirmationPage = new RegistrationConfirmationPage(_driver);
         registrationConfirmationPage.goToFlightDetailsPage();
     }
 
     @Test(dependsOnMethods = "registrationConfirmationPage")
     public void flightDetailsPage() {
+        System.out.println("Flight Details page test case");
         FlightDetailsPage flightDetailsPage = new FlightDetailsPage(_driver);
         flightDetailsPage.selectPassengers(noOfPassengers);
         flightDetailsPage.goToFindFlightsPage();
@@ -47,6 +50,7 @@ public class BookFlightTest extends BaseTest {
 
     @Test(dependsOnMethods = "flightDetailsPage")
     public void findFlightPage() {
+        System.out.println("Find flight page test case");
         FindFlightPage findFlightPage = new FindFlightPage(_driver);
         findFlightPage.submitFindFlightsPage();
         findFlightPage.goToFlightConfirmationPage();
@@ -54,6 +58,7 @@ public class BookFlightTest extends BaseTest {
 
     @Test(dependsOnMethods = "findFlightPage")
     public void flightConfirmationPage() {
+        System.out.println("Flight confirmation page test case");
         FlightConfirmationPage flightConfirmationPage = new FlightConfirmationPage(_driver);
         String actualPrice = flightConfirmationPage.getPrice();
         Assert.assertEquals(actualPrice, expectedPrice);
