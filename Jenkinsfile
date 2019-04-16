@@ -1,17 +1,21 @@
 pipeline {
-    agent none
-    stages {
-        stage('Sonarqube') {
-            steps {
-                def scannerHome = SonarQubeScanner
-                withSonarQubeEnv('sonarqube') {
-                    sh "${scannerHome}/bin/sonar-scanner"
-                }
-                timeout(time: 10, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
+  agent {
+    node {
+          label "master"
         }
+      }
+
+      stages {
+        stage("SonarQube analysis") {
+           steps {
+              script {
+                  def sonarScanner = tool name: 'SonarQube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+                  bat "${sonarScanner}/bin/sonar-scanner -e -Dsonar.host.url=xxx"
+                }
+             }
+          }
+        }
+
         stage('Build Jar') {
             agent {
                 docker {
