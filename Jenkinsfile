@@ -2,8 +2,10 @@ pipeline {
     agent none
     stages {
         stage('Sonarqube') {
-             withSonarQubeEnv('SonarQube') {
-             sh 'mvn clean compile sonar:sonar -Dsonar.host.url=http://192.168.0.3:9000 -Dsonar.login=549bd38d85c9259aa047b08bba9f8e5887732b19 -Dsonar.test.inclusions=**/*Test*/**'
+             steps {
+                withSonarQubeEnv('SonarQube') {
+                sh 'mvn clean compile sonar:sonar -Dsonar.host.url=http://192.168.0.3:9000 -Dsonar.login=549bd38d85c9259aa047b08bba9f8e5887732b19 -Dsonar.test.inclusions=**/*Test*/**'
+                }
             }
             timeout(time: 5, unit: 'MINUTES') {
             waitForQualityGate abortPipeline: true
