@@ -2,16 +2,11 @@ pipeline {
     agent none
     stages {
         stage('Sonarqube') {
-            environment {
-                scannerHome = tool 'SonarQubeScanner'
+             withSonarQubeEnv('SonarQube') {
+             sh 'mvn clean compile sonar:sonar -Dsonar.host.url=http://192.168.0.3:9000 -Dsonar.login=549bd38d85c9259aa047b08bba9f8e5887732b19 -Dsonar.test.inclusions=**/*Test*/**'
             }
-            steps {
-                withSonarQubeEnv('SonarQube') {
-                    sh "${scannerHome}/bin/sonar-scanner"
-                }
-                timeout(time: 10, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
+            timeout(time: 5, unit: 'MINUTES') {
+            waitForQualityGate abortPipeline: true
             }
         }
         stage('Build Jar') {
