@@ -10,7 +10,7 @@ pipeline {
            steps {
               script {
                   def sonarScanner = tool name: 'SonarQube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-                  bat "${sonarScanner}/bin/sonar-scanner -e -Dsonar.host.url=xxx"
+                  sh "${sonarScanner}/bin/sonar-scanner -e -Dsonar.host.url=http://192.168.0.3:9000"
                 }
              }
           }
@@ -45,4 +45,3 @@ pipeline {
             }
         }
     }
-}
