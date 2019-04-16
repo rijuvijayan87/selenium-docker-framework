@@ -3,13 +3,13 @@ pipeline {
     stages {
         stage('Sonarqube') {
             steps {
-                    withSonarQubeEnv('SonarQube') {
-                        sh 'mvn clean compile sonar:sonar -Dsonar.host.url=http://192.168.0.3:9000 -Dsonar.login=549bd38d85c9259aa047b08bba9f8e5887732b19 -Dsonar.test.inclusions=**/*Test*/**'
-                    }
-                    timeout(time: 10, unit: 'MINUTES') {
-                        waitForQualityGate abortPipeline: true
-                    }
+                withSonarQubeEnv('sonarqube') {
+                    sh "${scannerHome}/bin/sonar-scanner"
                 }
+                timeout(time: 10, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
         }
         stage('Build Jar') {
             agent {
@@ -32,7 +32,6 @@ pipeline {
         stage('Push Image') {
             steps {
                 script {
-			        //docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
 			        docker.withRegistry('http://192.168.0.3:5000') {
 			        	app.push("${BUILD_NUMBER}")
 			            app.push("latest")
