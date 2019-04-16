@@ -1,21 +1,6 @@
 pipeline {
-  agent {
-    node {
-          label "master"
-        }
-      }
-
-      stages {
-        stage("SonarQube analysis") {
-           steps {
-              script {
-                  def sonarScanner = tool name: 'SonarQube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-                  sh "${sonarScanner}/bin/sonar-scanner -e -Dsonar.host.url=http://192.168.0.3:9000"
-                }
-             }
-          }
-        }
-
+    agent none
+    stages {
         stage('Build Jar') {
             agent {
                 docker {
@@ -45,3 +30,4 @@ pipeline {
             }
         }
     }
+}
