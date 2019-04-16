@@ -18,16 +18,4 @@
             <class name="com.searchmodule.test.SearchTest" />
         </classes>
     </test>
-    <test name="search-test-kubernetes">
-        <parameter name="keyword" value="kubernetes" />
-        <classes>
-            <class name="com.searchmodule.test.SearchTest" />
-        </classes>
-    </test>
-    <test name="search-test-Selenium">
-        <parameter name="keyword" value="selenium" />
-        <classes>
-            <class name="com.searchmodule.test.SearchTest" />
-        </classes>
-    </test>
 </suite>
