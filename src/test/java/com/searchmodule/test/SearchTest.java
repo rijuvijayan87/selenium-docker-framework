@@ -2,13 +2,10 @@ package com.searchmodule.test;
 
 import com.searchmodule.pages.SearchPage;
 import com.tests.BaseTest;
-import libs.ExecutionListener;
 import org.testng.Assert;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-@Listeners(ExecutionListener.class)
 public class SearchTest extends BaseTest {
 
     @Test

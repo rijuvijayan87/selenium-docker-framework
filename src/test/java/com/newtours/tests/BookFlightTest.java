@@ -2,14 +2,11 @@ package com.newtours.tests;
 
 import com.newtours.tests.pages.*;
 import com.tests.BaseTest;
-import libs.ExecutionListener;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-@Listeners(ExecutionListener.class)
 public class BookFlightTest extends BaseTest {
 
     private String noOfPassengers;
