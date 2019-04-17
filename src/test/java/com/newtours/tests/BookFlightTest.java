@@ -24,7 +24,7 @@ public class BookFlightTest extends BaseTest {
 
     @Test
     public void registrationPage() {
-        System.out.println("Registration page test case");
+        System.out.println("Registration page test cases");
         RegistrationPage registrationPage = new RegistrationPage(_driver);
         registrationPage.goTo();
         registrationPage.enterUserDetails("selenium", "docker");
