@@ -12,10 +12,4 @@
             <class name="com.searchmodule.test.SearchTest" />
         </classes>
     </test>
-    <test name="search-test-docker">
-        <parameter name="keyword" value="docker" />
-        <classes>
-            <class name="com.searchmodule.test.SearchTest" />
-        </classes>
-    </test>
 </suite>
