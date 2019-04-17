@@ -1,16 +1,15 @@
 package com.newtours.tests;
 
-import com.google.common.collect.FluentIterable;
 import com.newtours.tests.pages.*;
 import com.tests.BaseTest;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import libs.ExecutionListener;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+@Listeners(ExecutionListener.class)
 public class BookFlightTest extends BaseTest {
 
     private String noOfPassengers;
@@ -35,7 +34,7 @@ public class BookFlightTest extends BaseTest {
 
     @Test(dependsOnMethods = "registrationPage")
     public void registrationConfirmationPage() {
-        System.out.println("Registration confirmation page test case");
+        System.out.println("Registration confirmation page test cases");
         RegistrationConfirmationPage registrationConfirmationPage = new RegistrationConfirmationPage(_driver);
         registrationConfirmationPage.goToFlightDetailsPage();
     }
