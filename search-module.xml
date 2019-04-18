@@ -12,10 +12,4 @@
             <class name="com.searchmodule.test.SearchTest" />
         </classes>
     </test>
-    <test name="search-test-webdriver">
-        <parameter name="keyword" value="docker" />
-        <classes>
-            <class name="com.searchmodule.test.SearchTest" />
-        </classes>
-    </test>
 </suite>
